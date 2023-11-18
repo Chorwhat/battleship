@@ -115,15 +115,15 @@ const GameBoard = (() => {
         }
 
         function recieveAttack(row, column) {
+            let target = board[row][column]
             
-            if(board[row][column] == 'x'){
+            if(target == 'x'){
                 missedAttacks.push(`${row},${column}`)
                 return "x"
             }else if (!successfulAttacks.includes(`${row},${column}`)){
                 successfulAttacks.push(`${row},${column}`)
-                console.log(board[row][column])
-                fleet.get(board[row][column]).hit()
-                return `ship ${fleet.get(board[row][column]).getShipName()} hit`
+                fleet.get(target).hit()
+                return `ship ${fleet.get(target).getShipName()} hit`
             }
             else{
                 console.log(successfulAttacks)
@@ -131,12 +131,20 @@ const GameBoard = (() => {
             }
         }
 
+        function isFleetSunk(){
+            let results = []
+            fleet.forEach((ship) => {
+                results.push(ship.getIsSunk())
+            })
+            return !results.includes(false)
+        }
+
 
 
 
         
 
-        return{getHeight, getBoard,getMissedAttacks, getCount, getFleet, placeShipHorizontally, placeShipVertically, recieveAttack}
+        return{getHeight, isFleetSunk, getBoard,getMissedAttacks, getCount, getFleet, placeShipHorizontally, placeShipVertically, recieveAttack}
     }
 
     return createGameBoard

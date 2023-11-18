@@ -30,13 +30,17 @@ const Ship = (() => {
             hits += 1
 
             if(hits == shipLength){
-                isSunk = true
+                setIsSunk(true)
             }
+        }
+
+        function setIsSunk(bool){
+            isSunk = bool
         }
 
         
 
-        return {hit, getHits, getIsSunk, getShipName, getLength}
+        return {hit, setIsSunk, getHits, getIsSunk, getShipName, getLength}
     }
     return createShip
 })()

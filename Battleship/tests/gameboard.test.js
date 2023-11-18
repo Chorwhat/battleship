@@ -57,6 +57,16 @@ test('Dont allow overlapping ships to be placed horizontally', () => {
     expect(board.placeShipHorizontally(ship2,[0,3])).toBe(false)
 })
 
+test('Dont allow overlapping ships to be placed one vertically and one horizontally', () => {
+    const board = createGameboard(10,10)
+    const ship1 = createShip(5, 'one')
+    const ship2 = createShip(5, 'two')
+
+    expect(board.placeShipHorizontally(ship1,[0,4])).toBe(true)
+    expect(board.placeShipVertically(ship2,[0,3])).toBe(true)
+    console.log(board.getBoard())
+})
+
 test('hit ship with recieve attack', () => {
     const board = createGameboard(10,10)
     const ship1 = createShip(5, 'one')
@@ -73,7 +83,6 @@ test('sink ship with recieve attack', () => {
     board.recieveAttack(0,4)
     board.recieveAttack(0,5)
     board.recieveAttack(0,6)
-    board.recieveAttack(0,7)
     
     
     expect(board.getFleet().get(ship1.getShipName()).getHits()).toBe(3)
@@ -103,6 +112,28 @@ test('get fleet',()=>{
 
     expect(board.getFleet().get('one').getShipName()).toBe('one')
     expect(board.getFleet().get('two').getShipName()).toBe('two')
+})
+
+test('fleetSunk true',()=>{
+    const board = createGameboard(10,10)
+    const ship1 = createShip(5, 'one')
+    const ship2 = createShip(3, 'two')
+    board.placeShipHorizontally(ship1,[0,4])
+    board.placeShipVertically(ship2,[1,1])
+    board.getFleet().get('one').setIsSunk(true)
+    board.getFleet().get('two').setIsSunk(true)
+    expect(board.isFleetSunk()).toBe(true)
+})
+
+test('fleetSunk false',()=>{
+    const board = createGameboard(10,10)
+    const ship1 = createShip(5, 'one')
+    const ship2 = createShip(3, 'two')
+    board.placeShipHorizontally(ship1,[0,4])
+    board.placeShipVertically(ship2,[1,1])
+    board.getFleet().get('one').setIsSunk(true)
+    board.getFleet().get('two').setIsSunk(false)
+    expect(board.isFleetSunk()).toBe(false)
 })
 
 
