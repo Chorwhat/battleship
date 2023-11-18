@@ -21,6 +21,10 @@ const Ship = (() => {
             return isSunk
         }
 
+        function getLength(){
+            return shipLength
+        }
+
         //SETTERS
         function hit(){
             hits += 1
@@ -30,9 +34,7 @@ const Ship = (() => {
             }
         }
 
-        function getLength(){
-            return shipLength
-        }
+        
 
         return {hit, getHits, getIsSunk, getShipName, getLength}
     }
