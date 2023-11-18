@@ -30,7 +30,11 @@ const Ship = (() => {
             }
         }
 
-        return {hit, getHits, getIsSunk, getShipName}
+        function getLength(){
+            return shipLength
+        }
+
+        return {hit, getHits, getIsSunk, getShipName, getLength}
     }
     return createShip
 })()
