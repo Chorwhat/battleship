@@ -1,5 +1,5 @@
 const createGameboard = require('../components/gameboard');
-const createShip = require('../components/ship')
+const createShip = require('../components/Ship')
 
 test('Generate Board contains height * width elements', () => {
     const board = createGameboard(10,5)
@@ -62,8 +62,8 @@ test('Dont allow overlapping ships to be placed one vertically and one horizonta
     const ship1 = createShip(5, 'one')
     const ship2 = createShip(5, 'two')
 
-    expect(board.placeShipHorizontally(ship1,[0,4])).toBe(true)
-    expect(board.placeShipVertically(ship2,[0,3])).toBe(true)
+    expect(board.placeShipHorizontally(ship1,[1,2])).toBe(true)
+    expect(board.placeShipVertically(ship2,[0,3])).toBe(false)
     console.log(board.getBoard())
 })
 
@@ -118,10 +118,12 @@ test('fleetSunk true',()=>{
     const board = createGameboard(10,10)
     const ship1 = createShip(5, 'one')
     const ship2 = createShip(3, 'two')
+    
     board.placeShipHorizontally(ship1,[0,4])
     board.placeShipVertically(ship2,[1,1])
-    board.getFleet().get('one').setIsSunk(true)
-    board.getFleet().get('two').setIsSunk(true)
+   
+    board.getFleet().get(ship1.getShipName()).setIsSunk(true)
+    board.getFleet().get(ship2.getShipName()).setIsSunk(true)
     expect(board.isFleetSunk()).toBe(true)
 })
 
