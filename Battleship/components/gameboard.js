@@ -119,14 +119,15 @@ const GameBoard = (() => {
             
             if(target == 'x'){
                 missedAttacks.push(`${row},${column}`)
-                return "x"
+                board[row][column] = 'M'
+                return false
             }else if (!successfulAttacks.includes(`${row},${column}`)){
                 successfulAttacks.push(`${row},${column}`)
                 fleet.get(target).hit()
-                return `ship ${fleet.get(target).getShipName()} hit`
+                board[row][column] = `${fleet.get(target).getShipName()} hit`
+                return true
             }
             else{
-                console.log(successfulAttacks)
                 return "other"
             }
         }
