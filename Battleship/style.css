@@ -31,3 +31,11 @@
 .player div:hover {
   background-color: #aaa;
 }
+
+.player .successful-attack {
+  background-color: red; /* Change the background color or add other styles as needed */
+}
+
+.player .missed-attack {
+  background-color: cyan; /* Change the background color or add other styles as needed */
+}
