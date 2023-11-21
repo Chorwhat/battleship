@@ -164,12 +164,43 @@ const GameBoard = (() => {
             return true
         }
 
+        function fillBoardWithCells(){
+            const player1Div = document.getElementById("player1");
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    const cell1 = document.createElement("div");
+            
+                    cell1.id = `cell-1-${i}-${j}`;
+        
+                    // Add a click event listener to each cell
+                    cell1.addEventListener("click", () => handleClick(i, j));
+            
+                    player1Div.appendChild(cell1);
+                    
+                }
+            }
+        }
+
+        function handleClick(row, column){
+            const cell = document.getElementById(`cell-1-${row}-${column}`);
+            if (recieveAttack(row, column)) {
+            console.log("Successful Attack!");
+        
+        // Get the corresponding cell element
+        
+        
+        // Add a class to visually indicate a successful attack
+        cell.classList.add("successful-attack");
+    } else {
+        cell.classList.add("missed-attack");
+    }
+        }
 
 
 
         
 
-        return{getHeight, getWidth, isFleetSunk, getBoard,getMissedAttacks, getCount, getFleet, isValidTarget, placeShipHorizontally, placeShipVertically, recieveAttack}
+        return{getHeight, getWidth, isFleetSunk, getBoard,getMissedAttacks, getCount, getFleet,handleClick, fillBoardWithCells, isValidTarget, placeShipHorizontally, placeShipVertically, recieveAttack}
     }
 
     return createGameBoard
