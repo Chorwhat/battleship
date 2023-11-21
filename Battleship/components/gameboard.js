@@ -1,4 +1,4 @@
-const Ship = require('./ship')
+import Ship from './ship'
 
 const GameBoard = (() => {
 
@@ -175,4 +175,4 @@ const GameBoard = (() => {
     return createGameBoard
 })()
 
-module.exports = GameBoard
+export default GameBoard

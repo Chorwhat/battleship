@@ -39,4 +39,4 @@ const Player = (() => {
     return createPlayer
 })()
 
-module.exports = Player
+export default Player

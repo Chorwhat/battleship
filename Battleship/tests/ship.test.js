@@ -1,4 +1,4 @@
-const createShip = require('../components/Ship');
+import createShip from '../components/Ship'
 
 test('Initial hits should be 0', () => {
     // Create a ship instance

@@ -1,6 +1,6 @@
-const createPlayer = require('../components/player')
-const createShip = require('../components/Ship')
-const createGameboard = require('../components/gameboard')
+import createPlayer from '../components/player'
+import createShip from '../components/Ship'
+import createGameboard from '../components/gameboard'
 
 test('a player should be able to have a board', ()=>{
     const board = createGameboard(10,10)

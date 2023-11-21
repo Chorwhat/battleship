@@ -1,5 +1,5 @@
-const createGameboard = require('../components/gameboard');
-const createShip = require('../components/Ship')
+import createGameboard from '../components/gameboard'
+import createShip from '../components/Ship'
 
 test('Generate Board contains height * width elements', () => {
     const board = createGameboard(10,5)

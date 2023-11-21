@@ -46,4 +46,4 @@ const Ship = (() => {
     return createShip
 })()
 
-module.exports = Ship
+export default Ship
