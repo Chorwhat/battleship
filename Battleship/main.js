@@ -3,7 +3,6 @@
 import createGameBoard from "./components/gameboard"
 import createShip from './components/ship'
 
-// Import your GameBoard module here
 
 // Create game boards for player1 and player2
 const player1Board = createGameBoard(10, 10);

@@ -16,7 +16,7 @@
 }
 
 .separator {
-  width: 20px; /* Adjust the width of the separator */
+  width: 20px; 
 }
 
 .player div {
@@ -33,9 +33,9 @@
 }
 
 .player .successful-attack {
-  background-color: red; /* Change the background color or add other styles as needed */
+  background-color: red;
 }
 
 .player .missed-attack {
-  background-color: cyan; /* Change the background color or add other styles as needed */
+  background-color: cyan; 
 }

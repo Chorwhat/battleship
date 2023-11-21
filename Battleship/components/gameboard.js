@@ -168,14 +168,14 @@ const GameBoard = (() => {
             const player1Div = document.getElementById("player1");
             for (let i = 0; i < 10; i++) {
                 for (let j = 0; j < 10; j++) {
-                    const cell1 = document.createElement("div");
+                    const cell = document.createElement("div");
             
-                    cell1.id = `cell-1-${i}-${j}`;
+                    cell.id = `cell-1-${i}-${j}`;
         
-                    // Add a click event listener to each cell
-                    cell1.addEventListener("click", () => handleClick(i, j));
+                    
+                    cell.addEventListener("click", () => handleClick(i, j));
             
-                    player1Div.appendChild(cell1);
+                    player1Div.appendChild(cell);
                     
                 }
             }
@@ -186,10 +186,6 @@ const GameBoard = (() => {
             if (recieveAttack(row, column)) {
             console.log("Successful Attack!");
         
-        // Get the corresponding cell element
-        
-        
-        // Add a class to visually indicate a successful attack
         cell.classList.add("successful-attack");
     } else {
         cell.classList.add("missed-attack");
