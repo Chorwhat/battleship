@@ -14,6 +14,13 @@ const Player = (() => {
             return enemy.recieveAttack(row,column)
         }
 
+        function computerAttack(enemy,row,column){
+            let enemyWidth = enemy.getWidth()
+            let enemyHeight = enemy.getHeight()
+
+            
+        }
+
         return {getBoard, attack}
     }
     return createPlayer

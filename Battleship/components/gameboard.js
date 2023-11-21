@@ -24,6 +24,10 @@ const GameBoard = (() => {
             return boardHeight
         }
 
+        function getWidth(){
+            return boardWidth
+        }
+
         function getBoard(){
             return board
         }
@@ -140,12 +144,32 @@ const GameBoard = (() => {
             return !results.includes(false)
         }
 
+        function isValidTarget(row, column){
+
+            if(row >= boardWidth || row < 0){
+                return false
+            }
+            if(column >= boardHeight || column < 0){
+                return false
+            }
+
+            if(board[row][column] == 'M'){
+                return false
+            }
+
+            if(board[row][column].includes('hit')){
+                return false
+            }
+
+            return true
+        }
+
 
 
 
         
 
-        return{getHeight, isFleetSunk, getBoard,getMissedAttacks, getCount, getFleet, placeShipHorizontally, placeShipVertically, recieveAttack}
+        return{getHeight, getWidth, isFleetSunk, getBoard,getMissedAttacks, getCount, getFleet, isValidTarget, placeShipHorizontally, placeShipVertically, recieveAttack}
     }
 
     return createGameBoard

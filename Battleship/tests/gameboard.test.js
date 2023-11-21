@@ -111,6 +111,27 @@ test('log missed attacks with recieve attack', () => {
 })
 
 
+test('test isValidTarget', () => {
+    const board = createGameboard(10,10)
+    const ship1 = createShip(3, 'one')
+    board.placeShipHorizontally(ship1,[1,4])
+    board.recieveAttack(0,4)
+    board.recieveAttack(1,4)
+    board.recieveAttack(8,8)
+
+    expect(board.isValidTarget(0,4)).toBe(false)
+    expect(board.isValidTarget(-1,5)).toBe(false)
+    expect(board.isValidTarget(10,4)).toBe(false)
+    expect(board.isValidTarget(3,11)).toBe(false)
+    expect(board.isValidTarget(5,-1)).toBe(false)
+    expect(board.isValidTarget(4,4)).toBe(true)
+    expect(board.isValidTarget(10,4)).toBe(false)
+    expect(board.isValidTarget(8,8)).toBe(false)
+    expect(board.isValidTarget(8,9)).toBe(true)
+   
+})
+
+
 test('get fleet',()=>{
     const board = createGameboard(10,10)
     const ship1 = createShip(5, 'one')
