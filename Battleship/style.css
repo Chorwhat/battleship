@@ -32,10 +32,28 @@
   background-color: #aaa;
 }
 
-.player .successful-attack {
-  background-color: red;
-}
+
 
 .player .missed-attack {
   background-color: cyan; 
+  pointer-events: none;
 }
+
+
+
+
+
+
+.player .successful-attack {
+  background-color: red;
+  pointer-events: none;
+}
+
+#player1 .ship {
+  background-color: green;
+}
+#player1 .ship.successful-attack {
+  background-color: red;
+}
+
+
