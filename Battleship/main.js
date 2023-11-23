@@ -15,54 +15,9 @@ const ship3 = createShip(3, 'tim')
 const ship4 = createShip(3, 'tom')
 const ship5 = createShip(1, 'lil guy')
 
-
-// player1Board.placeShipHorizontally(ship1,[0,3])
-// player1Board.placeShipVertically(ship2,[0,0])
-// player1Board.placeShipVertically(ship3,[7,5])
-// player1Board.placeShipHorizontally(ship4,[4,3])
-// player1Board.placeShipHorizontally(ship5,[9,3])
-
-
-// let shipIndex = 0;
-// let fleetLength = player1Board.getFleet().size
-// while (fleetLength < 5) {
-//     let orientation = parseInt(prompt("Enter 1 to place vertically or 0 to place horizontally"));
-//     let row = parseInt(prompt("Enter row"));
-//     let col = parseInt(prompt("Enter column"));
-//     let ships = [ship1, ship2, ship3, ship4, ship5];
-
-//     alert("before size " + player1Board.getFleet().size)
-//     if (orientation === 0) {
-//         alert(`Attempt horizontal placement of ${ships[shipIndex].getShipName()} at ${row}, ${col}`);
-//         if (player1Board.placeShipHorizontally(ships[shipIndex], [row, col])) {
-//             alert(`Placed ${ships[shipIndex].getShipName()} horizontally`);
-//             shipIndex += 1;
-//             fleetLength += 1
-//         } else {
-//             alert("Could not place horizontally");
-//         }
-//     } else if (orientation === 1) {
-//         alert(`Attempt vertical placement of ${ships[shipIndex].getShipName()} at ${row}, ${col}`);
-//         if (player1Board.placeShipVertically(ships[shipIndex], [row, col])) {
-//             alert(`Placed ${ships[shipIndex].getShipName()} vertically`);
-//             fleetLength += 1
-//             shipIndex += 1;
-//         } else {
-//             alert("Could not place vertically");
-//         }
-//     } else if (orientation === -1) {
-//         break;
-//     }
-
-//     alert(`ShipIndex ${shipIndex}`);
-//     alert(`Fleet size: ${fleetLength}`);
-// }
-
 let shipIndex = 0
 let fleetLength = player1Board.getFleet().size
 const ships = [ship1, ship2, ship3, ship4, ship5];
-
-
 
 function placeShip() {
     let rowInput = parseInt(document.getElementById("rowInput").value);
@@ -74,6 +29,9 @@ function placeShip() {
 
     let row = parseInt(rowInput);
     let col = parseInt(colInput);
+   
+    //uncommenting the below line flips the grid placement
+    //row = Math.abs(row-10)
 
     let orientation = parseInt(prompt("Enter 0 to place horizontally or 1 to place vertically"));
 
@@ -87,7 +45,7 @@ function placeShip() {
             shipsLengthText.innerText = `placing ship of length: ${ships[shipIndex].getLength()}`
             }
         } else {
-            alert.log("Could not place horizontally");
+            alert("Could not place horizontally");
         }
     } else if (orientation === 1) {
         if (player1Board.placeShipVertically(ships[shipIndex], [row, col])) {
@@ -98,14 +56,12 @@ function placeShip() {
             if(shipIndex < 5){
             shipsLengthText.innerText = `placing ship of length: ${ships[shipIndex].getLength()}`}
         } else {
-            alert.log("Could not place vertically");
+            alert("Could not place vertically");
         }
     } else {
-        console.log("Invalid orientation. Please enter 0 or 1.");
+        alert("Invalid orientation. Please enter 0 or 1.");
     }
 
-    console.log(`ShipIndex: ${shipIndex}`);
-    console.log(`Fleet size: ${fleetLength}`);
     player.clearBoardOfCells("player1")
     player.fillBoardWithCells("player1")
 
@@ -117,8 +73,34 @@ function placeShip() {
 
 window.placeShip = placeShip; 
 
-player2Board.placeShipHorizontally(ship1,[2,3])
-player2Board.placeShipVertically(ship2,[0,0])
+
+
+function placeComputer() {
+    const computerShips = [createShip(5, 'compShip1'), createShip(4, 'compShip2'), createShip(3, 'compShip3'), createShip(3, 'compShip4'), createShip(1, 'compShip5')];
+
+    for (let i = 0; i < computerShips.length; i++) {
+        let randomRow, randomCol, randomOrientation;
+
+        // Generate random placement until a valid placement is found
+        do {
+            randomRow = Math.floor(Math.random() * 10);
+            randomCol = Math.floor(Math.random() * 10);
+            randomOrientation = Math.floor(Math.random() * 2); // 0 for horizontal, 1 for vertical
+
+            // Use the appropriate method based on the randomOrientation
+            if (randomOrientation === 0) {
+                var placed = player2Board.placeShipHorizontally(computerShips[i], [randomRow, randomCol]);
+            } else {
+                var placed = player2Board.placeShipVertically(computerShips[i], [randomRow, randomCol]);
+            }
+        } while (!placed);
+
+        console.log(`Placed ${computerShips[i].getShipName()} at [${randomRow}, ${randomCol}] ${randomOrientation === 0 ? 'horizontally' : 'vertically'}`);
+    }
+}
+
+
+placeComputer()
 
 
 const player = createPlayer("The computer", player1Board)

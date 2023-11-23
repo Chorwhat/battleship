@@ -9,6 +9,7 @@ const Player = (() => {
         function checkIfLost(board){
             if(board.isFleetSunk() == true){
                 alert(enemyName + " won!")
+                location.reload()
                 return true
             }
             return false
