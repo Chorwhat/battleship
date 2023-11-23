@@ -56,6 +56,9 @@ h1 {
   display: none;
 }
 
+.noclick{
+  pointer-events: none;
+}
 
 
 .player .successful-attack {

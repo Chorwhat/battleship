@@ -70,6 +70,7 @@ function placeShip() {
     let buttonInput = document.getElementById("buttonInput");
     let shipsLeftText = document.getElementById("shipsLeft");
     let shipsLengthText = document.getElementById("shipsLength");
+    let player2 = document.getElementById("player2");
 
     let row = parseInt(rowInput);
     let col = parseInt(colInput);
@@ -110,6 +111,7 @@ function placeShip() {
 
     if(fleetLength == 5){
         buttonInput.classList.add("noshow")
+        player2.classList.remove("noclick")
     }
 }
 
