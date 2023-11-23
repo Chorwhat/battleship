@@ -68,6 +68,8 @@ function placeShip() {
     let rowInput = parseInt(document.getElementById("rowInput").value);
     let colInput = parseInt(document.getElementById("colInput").value);
     let buttonInput = document.getElementById("buttonInput");
+    let shipsLeftText = document.getElementById("shipsLeft");
+    let shipsLengthText = document.getElementById("shipsLength");
 
     let row = parseInt(rowInput);
     let col = parseInt(colInput);
@@ -79,16 +81,23 @@ function placeShip() {
             console.log(`Placed ${ships[shipIndex].getShipName()} horizontally`);
             shipIndex++;
             fleetLength++;
+            shipsLeftText.innerText = `${5-fleetLength} left to place`
+            if(shipIndex < 5){
+            shipsLengthText.innerText = `placing ship of length: ${ships[shipIndex].getLength()}`
+            }
         } else {
-            console.log("Could not place horizontally");
+            alert.log("Could not place horizontally");
         }
     } else if (orientation === 1) {
         if (player1Board.placeShipVertically(ships[shipIndex], [row, col])) {
             console.log(`Placed ${ships[shipIndex].getShipName()} vertically`);
             shipIndex++;
             fleetLength++;
+            shipsLeftText.innerText = `${5-fleetLength} left to place`
+            if(shipIndex < 5){
+            shipsLengthText.innerText = `placing ship of length: ${ships[shipIndex].getLength()}`}
         } else {
-            console.log("Could not place vertically");
+            alert.log("Could not place vertically");
         }
     } else {
         console.log("Invalid orientation. Please enter 0 or 1.");

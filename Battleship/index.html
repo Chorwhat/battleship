@@ -14,11 +14,19 @@
     <div id="gamearea">
       <div class="player" id="player1"></div>
       <div id="buttonInput">
-        <label for="rowInput">Row:</label>
+        <label style=color:#FFC914 for="rowInput">Row:</label>
         <input type="number" id="rowInput" />
-        <label for="colInput">Column:</label>
+        <label style=color:#FFC914 for="colInput">Column:</label>
         <input type="number" id="colInput" />
+        
         <button onclick="placeShip()">Place Ship</button>
+
+        <div class="label">
+        <br>
+        <span id="shipsLeft" style=color:#FFC914 > 5 ships left to place</span>
+        <br>
+        <span id="shipsLength" style=color:#FFC914 > placing ship of length 5</span>
+      </div>
       </div>
 
    
