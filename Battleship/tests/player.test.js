@@ -35,7 +35,7 @@ test('a computer should make a strike on a valid move and look for other moves w
     board.placeShipHorizontally(ship1,[4,3])
     board.placeShipHorizontally(ship1,[4,5])
     
-    expect(bot.computerAttack(board,4,4)).toBe(true)
+    expect(bot.computerAttack(4,4)).toBe(true)
     expect(bot.computerAttack(board,4,4)).toBe(true)
     expect(bot.computerAttack(board,4,4)).toBe(true)
     expect(bot.computerAttack(board,4,4)).toBe(true)

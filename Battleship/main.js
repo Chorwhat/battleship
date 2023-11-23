@@ -16,13 +16,95 @@ const ship4 = createShip(3, 'tom')
 const ship5 = createShip(1, 'lil guy')
 
 
-player1Board.placeShipHorizontally(ship1,[0,3])
-player1Board.placeShipVertically(ship2,[0,0])
-player1Board.placeShipVertically(ship3,[7,5])
-player1Board.placeShipHorizontally(ship4,[4,3])
-player1Board.placeShipVertically(ship5,[3,9])
+// player1Board.placeShipHorizontally(ship1,[0,3])
+// player1Board.placeShipVertically(ship2,[0,0])
+// player1Board.placeShipVertically(ship3,[7,5])
+// player1Board.placeShipHorizontally(ship4,[4,3])
+// player1Board.placeShipHorizontally(ship5,[9,3])
 
 
+// let shipIndex = 0;
+// let fleetLength = player1Board.getFleet().size
+// while (fleetLength < 5) {
+//     let orientation = parseInt(prompt("Enter 1 to place vertically or 0 to place horizontally"));
+//     let row = parseInt(prompt("Enter row"));
+//     let col = parseInt(prompt("Enter column"));
+//     let ships = [ship1, ship2, ship3, ship4, ship5];
+
+//     alert("before size " + player1Board.getFleet().size)
+//     if (orientation === 0) {
+//         alert(`Attempt horizontal placement of ${ships[shipIndex].getShipName()} at ${row}, ${col}`);
+//         if (player1Board.placeShipHorizontally(ships[shipIndex], [row, col])) {
+//             alert(`Placed ${ships[shipIndex].getShipName()} horizontally`);
+//             shipIndex += 1;
+//             fleetLength += 1
+//         } else {
+//             alert("Could not place horizontally");
+//         }
+//     } else if (orientation === 1) {
+//         alert(`Attempt vertical placement of ${ships[shipIndex].getShipName()} at ${row}, ${col}`);
+//         if (player1Board.placeShipVertically(ships[shipIndex], [row, col])) {
+//             alert(`Placed ${ships[shipIndex].getShipName()} vertically`);
+//             fleetLength += 1
+//             shipIndex += 1;
+//         } else {
+//             alert("Could not place vertically");
+//         }
+//     } else if (orientation === -1) {
+//         break;
+//     }
+
+//     alert(`ShipIndex ${shipIndex}`);
+//     alert(`Fleet size: ${fleetLength}`);
+// }
+
+let shipIndex = 0
+let fleetLength = player1Board.getFleet().size
+const ships = [ship1, ship2, ship3, ship4, ship5];
+
+
+
+function placeShip() {
+    let rowInput = parseInt(document.getElementById("rowInput").value);
+    let colInput = parseInt(document.getElementById("colInput").value);
+    let buttonInput = document.getElementById("buttonInput");
+
+    let row = parseInt(rowInput);
+    let col = parseInt(colInput);
+
+    let orientation = parseInt(prompt("Enter 0 to place horizontally or 1 to place vertically"));
+
+    if (orientation === 0) {
+        if (player1Board.placeShipHorizontally(ships[shipIndex], [row, col])) {
+            console.log(`Placed ${ships[shipIndex].getShipName()} horizontally`);
+            shipIndex++;
+            fleetLength++;
+        } else {
+            console.log("Could not place horizontally");
+        }
+    } else if (orientation === 1) {
+        if (player1Board.placeShipVertically(ships[shipIndex], [row, col])) {
+            console.log(`Placed ${ships[shipIndex].getShipName()} vertically`);
+            shipIndex++;
+            fleetLength++;
+        } else {
+            console.log("Could not place vertically");
+        }
+    } else {
+        console.log("Invalid orientation. Please enter 0 or 1.");
+    }
+
+    console.log(`ShipIndex: ${shipIndex}`);
+    console.log(`Fleet size: ${fleetLength}`);
+    player.clearBoardOfCells("player1")
+    player.fillBoardWithCells("player1")
+
+    if(fleetLength == 5){
+        buttonInput.classList.add("noshow")
+    }
+}
+
+window.placeShip = placeShip; 
 
 player2Board.placeShipHorizontally(ship1,[2,3])
 player2Board.placeShipVertically(ship2,[0,0])

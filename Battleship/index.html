@@ -9,10 +9,17 @@
   </head>
   <body>
     
-    <h1>text go here</h1>
-
+    <h1>BattleShip</h1>
+    <script type="module" src="/main.js"></script>
     <div id="gamearea">
       <div class="player" id="player1"></div>
+      <div id="buttonInput">
+        <label for="rowInput">Row:</label>
+        <input type="number" id="rowInput" />
+        <label for="colInput">Column:</label>
+        <input type="number" id="colInput" />
+        <button onclick="placeShip()">Place Ship</button>
+      </div>
 
    
       <div class="separator" id="scoreboard"></div>
@@ -20,6 +27,6 @@
       <div class="player" id="player2"></div>
     </div>
     </div>
-    <script type="module" src="/main.js" defer></script>
+    
   </body>
 </html>

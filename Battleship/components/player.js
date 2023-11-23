@@ -93,6 +93,13 @@ const Player = (() => {
    
         }
 
+        function clearBoardOfCells(boardDiv){
+            const divContainer = document.getElementById(boardDiv);
+            divContainer.innerHTML = '';
+            
+   
+        }
+
         function handleClick(boardDiv, row, column){
 
             if(row >=10 || column >= 10){
@@ -110,7 +117,7 @@ const Player = (() => {
         }
         
 
-        return {getBoard, attack, computerAttack,fillBoardWithCells}
+        return {getBoard, attack, computerAttack,fillBoardWithCells, clearBoardOfCells}
     }
     return createPlayer
 })()
